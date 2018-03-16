@@ -43,12 +43,16 @@ end
 
 -- 验证账号密码
 function M:verify(account, passwd)
+    print("======>verify")
+    print(account, passwd)
     local info = self.account_tbl[account]
     if not info then
+        print("account not exist")
         return false, "account not exist"
     end
 
     if info.passwd ~= passwd then
+        print("wrong password")
         return false, "wrong password"
     end
 
@@ -57,6 +61,8 @@ end
 
 -- 注册账号
 function M:register(account, passwd)
+    print("======>register")
+    print(account, passwd)
     if self.account_tbl[account] then
         return false, "account exists"
     end
